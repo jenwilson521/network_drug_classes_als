@@ -1,6 +1,6 @@
 # network_drug_classes_als
 
-## network analysis
+## Network Analysis
 Example code for the network analysis is provided in the network_analysis folder. 
 ### Neurodegeneration disease indication expansion
 Our code for creating the network heatmap images relies on a file Drugbank050120.xlsx that we cannot release. We recommend downloading DrugBank version 5.1.6. and we used the following code to parse the XML data base and create a .xlsx object that contains DrugBankID, DrugName, ATC codes, and description: ttps://github.com/dhimmel/drugbank/blob/gh-pages/parse.ipynb
