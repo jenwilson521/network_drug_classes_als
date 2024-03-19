@@ -4,7 +4,7 @@
 - ALS project
 - Incorporating LINCS (meta)data
 - Go to the corresponding directory
-    #terminal: 'cd /u/project/lune/shared/als/lincs/'
+    #terminal: 'cd /als/lincs/'
 - Activate the virtual environment in the directory
     #terminal: 'source alsproj/bin/activate'
 - Run the code
@@ -24,7 +24,7 @@ import seaborn as sns
 
 # directory
 
-data_dir = '/u/project/lune/shared/als/lincs/'
+data_dir = '/als/lincs/'
 os.chdir(data_dir)
 
 print('')
@@ -105,14 +105,14 @@ print('')
 print('####################')
 print('')
 
-# read cs_drug_strings: cs_drug_strings
+# read cs_drug_strings: cs_drug_strings_0224.txt
 
 print('>>>>>>>>>>')
-print('read cs_drug_strings.txt: cs_drug_strings')
+print('read cs_drug_strings_0224.txt: cs_drug_strings')
 print('>>>>>>>>>>')
 print('')
 
-with open('cs_drug_strings.txt', 'r') as file:
+with open('cs_drug_strings_0224.txt', 'r') as file:
     content = file.read()
 cs_line = content.split('\n')[0]
 cs_strings = cs_line.split('=')[1].strip(" '").split(',')

@@ -9,7 +9,7 @@ import pickle
 
 # directory
 
-data_dir = '/u/project/lune/shared/ALS'
+data_dir = ''
 os.chdir(data_dir)
 
 print('####################')
@@ -51,14 +51,14 @@ print('')
 
 ####################
 
-# analyze the ALS data: cs_drug_strings
+# analyze the ALS data: cs_drug_strings_0224.txt
 
 print('CS ALS Data:')
 print('')
 
 # cs_drug_strings
 
-with open('cs_drug_strings.txt', 'r') as file:
+with open('cs_drug_strings_0224.txt', 'r') as file:
     content = file.read()
 
 cs_line = content.split('\n')[0]
