@@ -3,7 +3,7 @@
 ## Network Analysis
 Example code for the network analysis is provided in the network_analysis folder.
 
-### Finding PathFX phenotypes to icnorporate into ALS-PathFX
+### Finding PathFX phenotypes to incorporate into ALS-PathFX
 We demonstrate how we leverage the published PathFX database to prioritize phenotypes to keep in the ALS-PathFX version in search_pathfx_database.py.
 
 ### Neurodegeneration disease indication expansion
