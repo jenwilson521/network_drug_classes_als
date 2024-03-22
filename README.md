@@ -23,6 +23,9 @@ The results of this script are provided as Supplementary File 1 and are also inc
 
 To generate the drug-network classes, we used search_clusters_of_interst_v5_fixStrings.py. Again, this file requires the same DrugBank files from above, and the result from the prior script, all_drug_summary_als_san_0623.xlsx. You will need to update the path to the file in line 40. This will create supplementary file 2, all_net_prot_clusters_0224.xlsx. This script will also create slices of the above dataframe per network class and will generate .txt files of all drug strings and their synonyms which were needed for later clinical analysis. All of the drug strings files are included in drug_strings_0224.
 
+### Comparison of network-associated disease classes
+We provided code for this analysis in network_analysis/pathways_0224/compare_phens.py. This generated Figure S22E and the last tab of Supplementary File 10.
+
 ## Gene expression analysis
 We provided our code for accessing PharmOmics (code_als_signature.py). This script requires that you have access to the data as an object "PharmOmics_drug_signature_database.txt", the list of drug strings from the network analysis ("cs_drug_strings_0224.txt"), and a pickled dictionary of DrugBank ID to DrugName generated from DrugBank version 5.1.6 ("drugbankid_to_name.pkl").
 
