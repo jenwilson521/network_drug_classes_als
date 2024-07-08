@@ -33,7 +33,7 @@ print('gathered atc codes')
 
 
 # get approved drug list
-app_drugs = set()
+app_drugs = set() # 3988 unique approved drugs
 for (db,dg) in zip(dbdf.drugbank_id,dbdf.groups):
 	for g in dg.split('|'):
 		if g=='approved':
@@ -42,6 +42,7 @@ for (db,dg) in zip(dbdf.drugbank_id,dbdf.groups):
 # load pathway results
 f = 'all_drug_summary_als_san_0623.xlsx'
 rdf = pd.read_excel(f)
+r_dbids = set(rdf.DrugBankID) # 2984 drugs
 
 # get all network proteins, define group classes
 all_net_prot = set([g for gstr in rdf['NetworkGenes'].to_list() for g in gstr.split(',')])
@@ -86,17 +87,18 @@ plot_data = plot_data.loc[:,(plot_data.sum()>2)] # require at least two drug net
 print('created plot data frame')
 
 # map ATC codes to colors, drugs to colors, then make into dataframe
-all_atc = sorted(set([x for aset in d2atc.values() for x in aset]))
+pfx_atc = dict([x for x in d2atc.items() if x[0] in r_dbids]) # 897 drugs with ATC cods (i.e. approved)
+all_atc = sorted(set([x for aset in pfx_atc.values() for x in aset])) # associated with 14 unique ATC codes
 atc_colors =['red','coral','peru','darkorange','gold','yellowgreen','green','lightseagreen','dodgerblue','slateblue','mediumorchid','violet','hotpink','lightpink'] 
 atc_to_color = dict(zip(all_atc,atc_colors))
-drug_to_color = dict([(d,atc_to_color[ac]) if len(ac_set)==1 else (d,'black') for (d,ac_set) in d2atc.items() for ac in ac_set]) # mixed class drugs in black, 3676 drug-ATC codes, 3150 unique drugs
+drug_to_color = dict([(d,atc_to_color[ac]) if len(ac_set)==1 else (d,'black') for (d,ac_set) in pfx_atc.items() for ac in ac_set]) # mixed class drugs in black,  drug-ATC codes, 3150 unique drugs
 (dnames,dcolors) = zip(*[(k,v) for (k,v) in drug_to_color.items()])
 rc_df = pd.DataFrame.from_dict({'Drugs': dnames,'ATC Codes': dcolors})
 rc_df = rc_df.set_index('Drugs')
 
 # bar chart of all ATC codes
 atc_count = defaultdict(int)
-for (d,aset) in d2atc.items():
+for (d,aset) in pfx_atc.items():
 	for acode in aset:
 		atc_count[acode]+=1
 
@@ -118,7 +120,7 @@ ax.spines['right'].set_visible(False)
 ax.spines['bottom'].set_visible(False)
 ax.spines['left'].set_visible(False)
 ax.invert_yaxis()  # labels read top-to-bottom
-plt.savefig('Num_active_ingred_level1_atc_codes.png',format='png')
+plt.savefig('Num_active_ingred_level1_atc_codes.png',format='png',dpi=300)
 
 # plot using code that I know works
 fig,ax = plt.subplots()
