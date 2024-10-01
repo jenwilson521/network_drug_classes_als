@@ -23,9 +23,9 @@ for k in p2c.keys():
 rem_phens = ['Autosomal Dominant Juvenile Parkinson Disease','Familial Juvenile Parkinsonism','Parkinsonism, Juvenile','Wolff-Parkinson-White pattern','Heat Stroke','Familial Alzheimer-like prion disease','Lewy Body Variant of Alzheimer Disease','Junctional epidermolysis bullosa gravis of Herlitz','Icterus Gravis Neonatorum']
 
 keep_cuis = [p2c[k] for (kt,phen_set) in key_words_to_phens.items() for k in phen_set if k not in rem_phens]
-print('Keep Phenotypes ',len(keep_cuis))
+print('Keep Phenotypes ',len(keep_cuis)) #220
 keep_cuis_25 = [c for c in keep_cuis if len(c2g[c])>=25]
-print('Phens with > 25 genes ',len(keep_cuis_25))
+print('Phens with > 25 genes ',len(keep_cuis_25)) #45
 
 aname = "neuro_expansion"
 rdir = os.path.join("../results/",aname)
