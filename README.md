@@ -34,4 +34,7 @@ We also provided code for accessing the LINCS dataset (code_level51.py). This re
 ## Clinical data analysis
 Example code for the clinical data analysis is provided in the clinical_analysis folder.
 
+## Citation
+This repository supports a submitted study. In the interim, the submitted manuscript can be viewed on MedRXiv: https://www.medrxiv.org/content/10.1101/2024.10.11.24315263v1
+
 Again, we are unable to make clinical data available, but we accessed the Optum Market Clarity data through DataBricks. In this environment, the data were in PySpark tables and we provide anonymized code to demonstrate our pipeline and our use of the python sklearn and R survival packages. For users with access to Market Clarity, they can update the empty file paths and use the PySpark, python, and R code provided. We provide an example for the ALS patients, measuring effects of the CXCR5 class, but this notebook can easily be changed using the drug_strings (described above) for other network classes and the diagnosis codes provided in Supplementary File 4 to recreate all other analyses.
